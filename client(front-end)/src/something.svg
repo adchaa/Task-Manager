@@ -1,0 +1,13 @@
+<svg width="523" height="199" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="svg_2_blur">
+   <feGaussianBlur stdDeviation="1.4" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="109" id="svg_1" y="136" x="174" stroke-width="0" stroke="#000" fill="#ffffff">TASK</text>
+  <path filter="url(#svg_2_blur)" transform="rotate(40, 120.756, 98.3489)" id="svg_2" d="m109.5897,40.54957l22.33209,0l0,115.59863l-22.33209,0l0,-115.59863z" stroke-width="0" stroke="#000" fill="#14cc6d"/>
+  <path filter="url(#svg_2_blur)" transform="rotate(130, 70.241, 117.032)" id="svg_5" d="m59.07491,83.63084l22.33209,0l0,66.80238l-22.33209,0l0,-66.80238z" stroke-width="0" stroke="#000" fill="#14cc6d"/>
+ </g>
+</svg>

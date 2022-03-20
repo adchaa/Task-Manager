@@ -1,0 +1,19 @@
+<svg width="135" height="72" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="svg_2_blur">
+   <feGaussianBlur stdDeviation="0.3" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_1_blur">
+   <feGaussianBlur stdDeviation="0.1" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_5_blur">
+   <feGaussianBlur stdDeviation="0.3" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <text style="cursor: move;" filter="url(#svg_1_blur)" font-style="normal" transform="matrix(0.284938, 0, 0, 0.351954, 13.817, 86.1226)" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="serif" font-size="109" id="svg_1" y="-114.45424" x="74.24578" stroke-width="0" stroke="#000" fill="#ffffff">TASK</text>
+  <path filter="url(#svg_2_blur)" transform="rotate(-0.374087, 22.0616, 30.3069)" id="svg_2" d="m28.41845,11.54038l3.80255,5.23553l-16.51626,32.29759l-3.80255,-5.23553l16.51626,-32.29759z" stroke-width="0" stroke="#000" fill="#14cc6d"/>
+  <path filter="url(#svg_5_blur)" transform="rotate(-3.54437, 10.8446, 37.6186)" id="svg_5" d="m18.17877,42.60744l-3.21329,6.60763l-11.4551,-16.58524l3.21329,-6.60763l11.4551,16.58524z" stroke-width="0" stroke="#000" fill="#14cc6d"/>
+ </g>
+</svg>
