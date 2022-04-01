@@ -1,14 +1,15 @@
 import quote_logo from "../right-quotes-symbol.png";
-
+import {FaQuoteLeft} from "react-icons/fa";
+import {FaQuoteRight} from "react-icons/fa";
 export const Quote = () => {
   return (
     <div className="quote">
-      <img className="logo_quote_top" src={quote_logo} alt="log_q" />
+      <FaQuoteRight className="logo_quote_top" />
       <h2>
-        if <span>TASK</span> once begun,
+        If <span>TASK</span> once begun,
       </h2>
       <h2>never leave it until it done.</h2>
-      <img className="logo_quote_bottom" src={quote_logo} alt="log_q" />
+      <FaQuoteLeft className="logo_quote_bottom" />
     </div>
   );
 };

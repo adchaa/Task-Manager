@@ -1,6 +1,8 @@
+
 body
 {
     margin: 0;
+    background-color: #050404;
 }
 .header
 {
@@ -10,29 +12,36 @@ body
 .quote
 {
     transform: translateY(-50px);
-    border: 5px dashed #2F4858;
+    border: 5px dashed #ffffff;
     box-sizing: border-box;
     border-radius: 30px;
     padding: 3rem;
     padding-top:calc(3rem - 20px) ;
+
 }
 .quote h2
 {
     font-weight: 400;
-    font-size: 52px;
+    font-size: 47px;
     line-height: 84px;
+    text-align: center;
 
-    color: #3F413C;
+    color: #b9bbb3;
 }
 .quote span
 {
     font-weight: 700;
-    font-size: 72px;
+    font-size: 60px;
     line-height: 96px;
 
-    color: #79E3A4;
+    color: #0e5b8f;
 
 
+}
+.background
+{
+    z-index: -500;
+    position: relative;
 }
 .bg
 {
@@ -46,7 +55,6 @@ body
 {
     display: flex;
     align-items: center;
-    background-color: #3A513C;
     width: 100vw;
     height: 8%;
 }
@@ -58,8 +66,7 @@ body
 }
 .logsign p
 {
-    margin-right: 30px;
-    color:white;
+    margin-right: 30px; 
     font-size: 20px;
     font-weight: 500;
     padding: 10px;
@@ -70,6 +77,11 @@ body
 {
     height: 100px;
 }
+
+.login
+{
+    color:white;
+}
 .login:hover
 {
     background: #8b918ba9;
@@ -77,17 +89,17 @@ body
 }
 .signup
 {
-    background: #59c470;
+    background: #f8faf9;
     border-radius: 15px;
+    color: #050404;
 }
 .signup:hover
 {
-    background: #429454;
+    background: #dce6de;
 }
 .head
 {
     height: 92%;
-    background-color: #5C8262;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,31 +133,30 @@ body
     margin-top: 25px;
     display: flex;
     border-radius: 2px;
-    width: 45%;
+    width: 37%;
     height: auto;
     align-items: center;    
 }
 .logo_quote_top
 {
     position: absolute;
+    color:white;
     top:0;
-    background-color: #5C8262;
     height: 3.5rem;
     width: 3.5rem;
     padding: 20px;
     left: 0;
-    transform: scaleY(-1) translateY(50px);;
     
 }
+
 .logo_quote_bottom
 {
     height: 3.5rem;
     width: 3.5rem;
+    color:white;
     position: absolute;
     bottom:0;
     right: 0;
-    transform: translateY(50px);
-    background-color: #5C8262;
     padding: 20px;
 
 }
