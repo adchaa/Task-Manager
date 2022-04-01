@@ -6,8 +6,12 @@ body
 }
 .header
 {
-    height: 100vh;
+    height: calc(100vh - 10px);
     width: 100vw;
+}
+.logo
+{
+    padding-left:5vw;
 }
 .quote
 {
@@ -23,7 +27,7 @@ body
 {
     font-weight: 400;
     font-size: 47px;
-    line-height: 84px;
+    line-height: 70px;
     text-align: center;
 
     color: #b9bbb3;
@@ -31,7 +35,7 @@ body
 .quote span
 {
     font-weight: 700;
-    font-size: 60px;
+    font-size: 55px;
     line-height: 96px;
 
     color: #0e5b8f;
@@ -57,18 +61,20 @@ body
     align-items: center;
     width: 100vw;
     height: 8%;
+    margin-top: 10px;
 }
 .logsign
 {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    margin-right: 5vw;
 }
 .logsign p
 {
     margin-right: 30px; 
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     padding: 10px;
     cursor: pointer;
 
@@ -92,10 +98,50 @@ body
     background: #f8faf9;
     border-radius: 15px;
     color: #050404;
+    position: relative;
+    box-shadow: 0px 0px 5px #f8faf9;
 }
-.signup:hover
+@keyframes border_animation
 {
-    background: #dce6de;
+    0%
+    {
+        border-width:0px;
+    }
+    33%
+    {
+        height: calc(100% + 5px);
+        border-width:3px 0px 0px 3px;
+
+    }
+    70%
+    {
+        width: calc(100% + 5px);
+        border-width:3px 0px 3px 3px;
+    }
+    100%
+    {
+        height: calc(100% + 4.8px);
+        width: calc(100% + 4.8px);
+        border-width:3px 3px 3px 3px;
+    }
+}
+.signup::before
+{
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    height:0;
+    width:0;
+    border:solid;
+    border-width: 0px;
+    border-radius: 18px;
+    border-color: #f8faf9;
+    transition: all 500ms;
+}
+.signup:hover::before
+{
+    animation: border_animation 0.5s ease-in forwards;
 }
 .head
 {
@@ -140,10 +186,10 @@ body
 .logo_quote_top
 {
     position: absolute;
-    color:white;
+    color:#b9bbb3;
     top:0;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 3rem;
+    width: 3rem;
     padding: 20px;
     left: 0;
     
@@ -151,9 +197,9 @@ body
 
 .logo_quote_bottom
 {
-    height: 3.5rem;
-    width: 3.5rem;
-    color:white;
+    height: 3rem;
+    width: 3rem;
+    color:#b9bbb3;
     position: absolute;
     bottom:0;
     right: 0;
