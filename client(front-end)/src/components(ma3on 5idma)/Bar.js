@@ -1,12 +1,13 @@
 import logo from "../logo.svg"
 import { Link } from "react-router-dom";
-const Bar = () => {
+import {motion} from "framer-motion";
+const Bar = ({btn_click}) => {
   return (
     <div className="bar">
       <img className="logo" src={logo} alt="logo"/>
       <div className="logsign">
-        <Link to="/login" style={{ textDecoration: 'none' }}><p className="login"> Login</p></Link>
-        <Link to="/signup" style={{ textDecoration: 'none' }}><p className="signup">Sign Up</p></Link>
+        <div><motion.p onClick={btn_click} className="login" whileHover={{scale:1.1}} whileTap={{scale:0.9}} > Login </motion.p></div>
+        <Link to="/signup" style={{ textDecoration: 'none' }}><motion.p whileHover={{scale:1.1}} className="signup">Sign Up</motion.p></Link>
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ import {
 
 //pages
 import { MainPage } from "./pages/MainPage";
-import { Login } from "./pages/Login";
 import { NotFound } from "./pages/NotFound";
 import { Signup } from "./pages/Signup";
 import Task from "./pages/Task";
@@ -17,7 +16,6 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<MainPage />}/>
-        <Route exact path="login" element={<Login />}/>
         <Route exact path="signup" element={<Signup />}/>
         <Route exact path="task" element={<Task />}/>
         <Route path="404" element={<NotFound />} />

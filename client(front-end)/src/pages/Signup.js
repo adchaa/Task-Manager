@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { MdOutlineArrowBackIos } from "react-icons/md";
+import {AiOutlineClose} from "react-icons/ai";
+import { motion } from "framer-motion";
 import verif from "../components(ma3on 5idma)/utils";
+import Particles from "react-tsparticles";
+import conf from "./particlesjs-config.json";
 export const Signup = (props) => {
   //states
   const { state } = useLocation();
@@ -74,9 +77,10 @@ export const Signup = (props) => {
   }
   return (
     <div className="container">
-      <form className="form">
+      <Particles params={conf} className="background"/>
+      <form className="inv form">
         <Link className="back" to="/">
-          <MdOutlineArrowBackIos color="white" size={25} />
+          <AiOutlineClose color="white" size={25} />
         </Link>
         <h1 className="title">Sign Up</h1>
         <h4>Username</h4>
@@ -114,9 +118,9 @@ export const Signup = (props) => {
         </div>
         <span className="error">{error_tos}</span>
         <div className="login_box">
-          <button onClick={e =>check(e)} className="btn_login">
+          <motion.button whileHover={{scale:1.1}} onClick={e =>check(e)} className="btn_login">
             Sign Up
-          </button>
+          </motion.button>
         </div>
       </form>
     </div>

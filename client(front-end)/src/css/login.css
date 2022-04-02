@@ -4,28 +4,39 @@ body {
 .container {
   width: 100vw;
   height: 100vh;
+  background-color: rgba(0, 0, 0, 0.753);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  z-index: 50;
+  top: 0;
 }
 .back
 {
     position: absolute;
     top:0;
-    left:0;
+    left:86%;
     margin: 20px 0 0 20px;
+    cursor: pointer;
     
 }
 .form {
-    position: relative;
+    position: absolute;
   padding: 80px;
   padding-top: 40px;
   padding-bottom: 50px;
-  background-color: #29462e;
+  background-color: #000000;
   border-radius: 30px;
-  border: none;
+  border: 3px solid #ffffff;
   width: 350px;
   color: rgb(219, 213, 213);
+  box-shadow: 0px 0px 10px #ffffffad;
+}
+.inv
+{
+  background-color: rgba(0, 0, 0, 0.678);
+  box-shadow: 0px 0px 10px #ffffffad,0px 0px 10px #ffffffad inset;
 }
 .form h4 {
   margin-bottom: 6px;
@@ -39,7 +50,7 @@ body {
   border: none;
 }
 .title {
-  color: #57ad55;
+  color: #ffffff;
   text-align: center;
 }
 .rem_check {
@@ -47,36 +58,28 @@ body {
   color: #b2afaf;
 }
 .btn_login {
-  background: #59c470;
-  background-image: -webkit-linear-gradient(top, #59c470, #3f8a4e);
-  background-image: -moz-linear-gradient(top, #59c470, #3f8a4e);
-  background-image: -ms-linear-gradient(top, #59c470, #3f8a4e);
-  background-image: -o-linear-gradient(top, #59c470, #3f8a4e);
-  background-image: linear-gradient(to bottom, #59c470, #3f8a4e);
+  background-color: #ffffff;
   -webkit-border-radius: 15;
   -moz-border-radius: 15;
   border-radius: 15px;
   font-family: Arial;
-  color: #f5f5f5;
+  color: black;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px #ffffffad;
+}
+.btn_login:hover {
+  box-shadow: 0px 0px 20px #ffffffad;
 }
 .error
 {
   color: red;
   font-size: 13px;
 }
-.btn_login:hover {
-  background: #4ba35c;
-  background-image: -webkit-linear-gradient(top, #4ba35c, #2f663a);
-  background-image: -moz-linear-gradient(top, #4ba35c, #2f663a);
-  background-image: -ms-linear-gradient(top, #4ba35c, #2f663a);
-  background-image: -o-linear-gradient(top, #4ba35c, #2f663a);
-  background-image: linear-gradient(to bottom, #4ba35c, #2f663a);
-  text-decoration: none;
-}
+
 .login_box {
   display: flex;
   width: 100%;
