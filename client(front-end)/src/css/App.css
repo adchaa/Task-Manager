@@ -7,7 +7,8 @@ body {
   width: 100vw;
 }
 .logo {
-  padding-left: 5vw;
+  padding-left: 7vw;
+  height: 65px;
 }
 .quote {
   transform: translateY(-50px);
@@ -62,9 +63,6 @@ body {
   font-weight: 600;
   padding: 10px;
   cursor: pointer;
-}
-.logo {
-  height: 100px;
 }
 
 .login {

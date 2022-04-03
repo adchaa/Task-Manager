@@ -1,4 +1,3 @@
-import quote_logo from "../right-quotes-symbol.png";
 import {FaQuoteLeft} from "react-icons/fa";
 import {FaQuoteRight} from "react-icons/fa";
 export const Quote = () => {

@@ -1,4 +1,4 @@
-import logo from "../logo.svg"
+import logo from "../resource/logo.png";
 import { Link } from "react-router-dom";
 import {motion} from "framer-motion";
 const Bar = ({btn_click}) => {

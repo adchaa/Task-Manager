@@ -1,4 +1,4 @@
-import logo from "../logo.svg"
+import logo from "../resource/logo.png"
 import {FaUser} from "react-icons/fa"
 function NavTask() {
   return (

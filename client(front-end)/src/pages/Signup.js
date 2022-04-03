@@ -4,7 +4,7 @@ import {AiOutlineClose} from "react-icons/ai";
 import { motion } from "framer-motion";
 import verif from "../components(ma3on 5idma)/utils";
 import Particles from "react-tsparticles";
-import conf from "./particlesjs-config.json";
+import conf from "../resource/particlesjs-config.json";
 export const Signup = (props) => {
   //states
   const { state } = useLocation();
