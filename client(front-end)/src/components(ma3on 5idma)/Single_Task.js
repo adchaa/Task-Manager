@@ -1,5 +1,3 @@
-import React from "react";
-
 function Single_Task({ task_text, task_desc }) {
   return (
     <div className="task_box">
