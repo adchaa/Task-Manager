@@ -135,3 +135,7 @@
 .complited p {
   color: #535353;
 }
+.dfg {
+  display: flex;
+  align-items: center;
+}

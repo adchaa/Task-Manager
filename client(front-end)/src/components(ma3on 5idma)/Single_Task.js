@@ -1,6 +1,6 @@
 import { MdDeleteOutline } from "react-icons/md";
 import { TiEdit } from "react-icons/ti";
-
+import { BsCheckAll } from "react-icons/bs";
 function Single_Task({ mode, task_text, task_desc }) {
   const highlight_selected = (e) => {
     let selected = document.getElementsByClassName("selected");
@@ -14,9 +14,17 @@ function Single_Task({ mode, task_text, task_desc }) {
       }}
       className={"task_box " + mode}
     >
-      <div>
-        <h4>{task_text}</h4>
-        <p>{task_desc}</p>
+      <div className="dfg">
+        <div style={{ margin: "0 5px 0 0" }}>
+          <BsCheckAll
+            size="20px"
+            color={mode === "complited" ? "green" : "gray"}
+          />
+        </div>
+        <div>
+          <h4>{task_text}</h4>
+          <p>{task_desc}</p>
+        </div>
       </div>
       <div className="ed_del_btn">
         <TiEdit className="edit_btn" size="25px" />
