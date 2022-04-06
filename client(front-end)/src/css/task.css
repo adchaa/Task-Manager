@@ -14,7 +14,6 @@
   width: 100vw;
   margin-top: 95px;
   justify-content: center;
-
 }
 .task_list {
   border: solid #212d6e 2px;
@@ -29,7 +28,7 @@
   width: 27vw;
   border: solid #283474 2px;
   padding: 20px;
-  color:white;
+  color: white;
 }
 .task_list_header {
   display: flex;
@@ -47,6 +46,16 @@
   border-radius: 5px;
   padding: 5px;
   padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.task_box:hover {
+  background-color: #283474;
+}
+.task_box:hover .ed_del_btn {
+  opacity: 1;
 }
 .task_box h4 {
   color: #ffffff;
@@ -66,13 +75,11 @@
   align-items: center;
   border-bottom: solid #283474 2px;
 }
-.desc
-{
+.desc {
   color: #868585;
-  font-size: 13px;
+  font-size: 15px;
 }
-.completed_status
-{
+.completed_status {
   color: green;
   font-size: 13px;
   margin-top: 3px;
@@ -95,4 +102,36 @@
   margin-top: 3px;
   text-align: end;
 }
-
+.ed_del_btn * {
+  margin-right: 8px;
+  cursor: pointer;
+}
+.ed_del_btn {
+  opacity: 0;
+}
+.delete_btn {
+  color: white;
+}
+.delete_btn:hover {
+  color: red;
+}
+.edit_btn {
+  color: white;
+}
+.edit_btn:hover {
+  color: #343a8f;
+}
+.selected {
+  background-color: #283474 !important;
+  border-color: #283474 !important;
+}
+.complited {
+  background-color: rgba(31, 150, 31, 0.267);
+  border-color: rgba(31, 150, 31, 0.267);
+}
+.complited h4 {
+  color: #c4c1c1;
+}
+.complited p {
+  color: #535353;
+}

@@ -11,9 +11,21 @@ export const TaskBody = () => {
             <BiPlus color="#fff" size="30px" />
           </div>
         </div>
-        <Single_Task task_text="Task 1" task_desc="Task 1 description" />
-        <Single_Task task_text="Task 1" task_desc="Task 1 description" />
-        <Single_Task task_text="Task 1" task_desc="Task 1 description" />
+        <Single_Task
+          mode="selected"
+          task_text="Task 1"
+          task_desc="Task 1 description"
+        />
+        <Single_Task
+          mode="normal"
+          task_text="Task 1"
+          task_desc="Task 1 description"
+        />
+        <Single_Task
+          mode="complited"
+          task_text="Task 1"
+          task_desc="Task 1 description"
+        />
       </div>
       <Taskdetails
         tasktitle="Task 1"
