@@ -1,14 +1,24 @@
 import { BiPlus, BiMinus } from "react-icons/bi";
 import Single_Task from "./Single_Task";
 import { Taskdetails } from "./Taskdetails";
+import { Add_task } from "./Add_task";
+import { useState } from "react";
 export const TaskBody = () => {
+  const [open, setopen] = useState(false);
   return (
     <div className="tbody">
+      <Add_task open={open} setopen={setopen} />
       <div className="task_list">
         <div className="task_list_header">
           <h4 className="task_title">Tasks</h4>
           <div>
-            <BiPlus color="#fff" size="30px" />
+            <BiPlus
+              onClick={() => {
+                setopen(!open);
+              }}
+              color="#fff"
+              size="30px"
+            />
           </div>
         </div>
         <Single_Task

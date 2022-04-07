@@ -1,4 +1,4 @@
-import logo from "../resource/logo.png";
+import logo from "../../resource/logo.png";
 import { FaUser } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 function NavTask() {
