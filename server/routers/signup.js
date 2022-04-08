@@ -1,0 +1,71 @@
+const { Router } = require("express");
+const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const db = require("../mysql/db");
+require("dotenv").config();
+
+const signup = Router();
+
+// create session for signup
+signup.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
+  })
+);
+
+signup.post(
+  "/",
+  [
+    check("username")
+      .isLength({ min: 3 })
+      .withMessage("username must be at least 3 characters"),
+    check("password")
+      .isLength({ min: 3 })
+      .withMessage("password must be at least 3 characters"),
+    check("email").isEmail().withMessage("email must be valid"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    const { username, password, email } = req.body;
+    //verify if username is already taken
+    db.query(
+      "SELECT * FROM users WHERE username = ?",
+      [username],
+      (err, results) => {
+        if (err) {
+          return res.status(500).json({
+            message: "Internal server error",
+          });
+        }
+        if (results.length > 0) {
+          return res.status(409).json({
+            message: "username already taken",
+          });
+        }
+      }
+    );
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    const query = `insert into users(username,password,email,date_of_inscription) values('${username}','${hash}','${email}',now())`;
+    db.query(query, (e) => {
+      if (e) {
+        res.status(422).send("something went wrong");
+        throw e;
+      } else {
+        console.log("user created");
+        res.status(200).send("user added successfully");
+      }
+    });
+  }
+);
+module.exports = signup;
