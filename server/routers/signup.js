@@ -1,24 +1,10 @@
 const { Router } = require("express");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const session = require("express-session");
 const db = require("../mysql/db");
 require("dotenv").config();
 
 const signup = Router();
-
-// create session for signup
-signup.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-    },
-  })
-);
-
 signup.post(
   "/",
   [
@@ -62,7 +48,6 @@ signup.post(
         res.status(422).send("something went wrong");
         throw e;
       } else {
-        console.log("user created");
         res.status(200).send("user added successfully");
       }
     });

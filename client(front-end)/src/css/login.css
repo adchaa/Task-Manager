@@ -78,6 +78,8 @@ body {
 .error {
   color: red;
   font-size: 13px;
+  margin-top: 0;
+  margin-left: 5px;
 }
 
 .login_box {

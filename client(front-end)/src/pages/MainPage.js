@@ -4,7 +4,12 @@ import { Head } from "../components(ma3on 5idma)/Head";
 import Particles from "react-tsparticles";
 import conf from "../resource/particlesjs-config.json";
 import { useState } from "react";
-export const MainPage = () => {
+import { Navigate } from "react-router-dom";
+export const MainPage = ({ login }) => {
+  console.log(login);
+  if (login) {
+    Navigate("/task");
+  }
   const [isopened, setIsopened] = useState(false);
   const close_wind = () => {
     setIsopened(false);
@@ -17,7 +22,6 @@ export const MainPage = () => {
       <Login open={isopened} setopen={setIsopened} />
       <Bar
         btn_click={() => {
-          console.log(isopened);
           isopened ? close_wind() : open_wind();
         }}
       />

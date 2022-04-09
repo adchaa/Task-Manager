@@ -6,33 +6,44 @@ const signup = require("./routers/signup.js");
 const app = express();
 const session = require("express-session");
 const cors = require("cors");
+const { compareSync } = require("bcryptjs");
+
+//core config
+const optioncors = {
+  origin: "http://localhost:3000",
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+app.use(cors(optioncors));
+app.use(express.urlencoded({ extended: true }));
 // session config
-app.use(cors());
 app.use(
   session({
     secret: process.env.SECRET,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   })
 );
+
 app.use(express.json());
-app.use("/login", log);
-app.use("/task", task);
-app.use("/signup", signup);
-//check if logged in
 app.get("/check", (req, res) => {
   if (req.session.user) {
     return res.status(200).json({
       message: "logged in",
     });
+  } else {
+    return res.status(200).json({
+      message: "not logged in",
+    });
   }
-  return res.status(200).json({
-    message: "not logged in",
-  });
 });
+app.use("/login", log);
+app.use("/task", task);
+app.use("/signup", signup);
+//check if logged in
 
 app.listen(3050, () => {
   console.log("server started at port 3050");
