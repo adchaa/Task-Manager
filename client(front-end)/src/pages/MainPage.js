@@ -3,13 +3,9 @@ import { Login } from "../components(ma3on 5idma)/Login";
 import { Head } from "../components(ma3on 5idma)/Head";
 import Particles from "react-tsparticles";
 import conf from "../resource/particlesjs-config.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-export const MainPage = ({ login }) => {
-  console.log(login);
-  if (login) {
-    Navigate("/task");
-  }
+export const MainPage = () => {
   const [isopened, setIsopened] = useState(false);
   const close_wind = () => {
     setIsopened(false);

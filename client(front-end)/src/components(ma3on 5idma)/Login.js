@@ -3,7 +3,7 @@ import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import axios from "axios";
+import { useAuth } from "./auth";
 export const Login = ({ open, setopen }) => {
   const popup = {
     hidden: {
@@ -20,28 +20,42 @@ export const Login = ({ open, setopen }) => {
   const [password, setpassword] = useState("");
   const [erroruser, seterroruser] = useState("");
   const [errorpass, seterrorpass] = useState("");
+  const auth = useAuth();
   //functin that redirects to task page
   let Navigate = useNavigate();
   const redirect = () => {
     Navigate("/task");
   };
-  function checklogin(e) {
-    e.preventDefault();
-    axios
-      .post("http://localhost:3050/login", {
+  //function that checks if username and password are correct and redirects to task page
+  const login_check = async () => {
+    const res = await fetch("http://localhost:3050/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         username: username,
         password: password,
-      })
-      .then((res) => {
-        if (res.data.message === "login successful") {
-          redirect();
-        } else if (res.data.message === "username is incorrect") {
-          seterroruser("username is incorrect");
-        } else {
-          seterrorpass("password is incorrect");
-        }
-      });
-  }
+      }),
+    });
+    const data = await res.json();
+
+    if (data.message === "login successful") {
+      console.log("logged in");
+      auth.login(data.username);
+      redirect();
+    } else if (data.message === "username is incorrect") {
+      seterroruser("username is incorrect");
+      seterrorpass("");
+    } else if (data.message === "password is incorrect") {
+      seterrorpass("password is incorrect");
+      seterroruser("");
+    } else {
+      console.log("error");
+    }
+  };
+
   return (
     <AnimatePresence>
       {open && (
@@ -83,7 +97,10 @@ export const Login = ({ open, setopen }) => {
             <div className="login_box">
               <motion.button
                 whileHover={{ scale: 1.1 }}
-                onClick={checklogin}
+                onClick={(e) => {
+                  e.preventDefault();
+                  login_check();
+                }}
                 className="btn_login"
               >
                 Login

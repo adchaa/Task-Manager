@@ -5,16 +5,18 @@ const log = Router();
 require("dotenv").config();
 // login user with username and password
 log.post("/", (req, res) => {
+  console.log(req.body);
   const { username, password } = req.body;
   const query = `select * from users where username = '${username}'`;
   db.query(query, (err, results) => {
+    console.log(results);
     if (err) {
       return res.status(500).json({
         message: "Internal server error",
       });
     }
     if (results.length === 0) {
-      res.status(200).send({ message: "username is incorrect" });
+      return res.status(200).send({ message: "username is incorrect" });
     }
     const user = results[0];
     const hash = user.password;
@@ -22,7 +24,10 @@ log.post("/", (req, res) => {
     if (isMatch) {
       req.session.user = user;
       req.session.save(() => {
-        res.status(200).send({ message: "login successful" });
+        res.status(200).send({
+          username: user.username,
+          message: "login successful",
+        });
       });
     } else {
       res.status(200).send({ message: "password is incorrect" });
