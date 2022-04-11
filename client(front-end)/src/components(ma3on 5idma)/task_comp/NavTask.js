@@ -1,14 +1,14 @@
 import logo from "../../resource/logo.png";
 import { FaUser } from "react-icons/fa";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { Profile_slide } from "../Profile_slide";
 function NavTask() {
   return (
     <div className="navtask">
-      <img src={logo} alt="logo" />
-      <div className="profile">
-        <IoMdNotificationsOutline color="white" size="22px" />
-        <FaUser color="white" size="20px" />
-      </div>
+      <Link to="/">
+        <img src={logo} alt="logo" />
+      </Link>
+      <Profile_slide />
     </div>
   );
 }

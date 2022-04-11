@@ -79,8 +79,7 @@ body {
   position: relative;
   box-shadow: 0px 0px 5px #f8faf9;
 }
-.signup:hover
-{
+.signup:hover {
   box-shadow: 0px 0px 10px #f8faf9;
 }
 .head {
@@ -135,4 +134,27 @@ body {
   bottom: 0;
   right: 0;
   padding: 20px;
+}
+.container_profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_profile > * {
+  margin-right: 10px;
+}
+.profile_name {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+}
+.circle_bg {
+  background-color: #383838;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

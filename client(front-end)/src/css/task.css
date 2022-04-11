@@ -3,11 +3,7 @@
   width: 100vw;
   align-items: center;
   background-color: #1b1b1b;
-  justify-content: space-evenly;
-}
-
-.profile * {
-  margin-left: 12px;
+  justify-content: space-around;
 }
 .tbody {
   display: flex;

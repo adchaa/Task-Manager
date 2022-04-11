@@ -1,13 +1,13 @@
 //imports
 const express = require("express");
-const log = require("./routers/login.js");
-const task = require("./routers/task");
-const signup = require("./routers/signup.js");
 const app = express();
 const session = require("express-session");
 const cors = require("cors");
-const { compareSync } = require("bcryptjs");
-
+//import routers
+const log = require("./routers/login.js");
+const task = require("./routers/task");
+const signup = require("./routers/signup.js");
+const logout = require("./routers/logout.js");
 //core config
 const optioncors = {
   origin: "http://localhost:3000",
@@ -30,7 +30,6 @@ app.use(
 
 app.use(express.json());
 app.get("/check", (req, res) => {
-  console.log(req.session.user);
   if (req.session.user) {
     return res.status(200).json({
       username: req.session.user.username,
@@ -42,10 +41,11 @@ app.get("/check", (req, res) => {
     });
   }
 });
+//routers uses
 app.use("/login", log);
 app.use("/task", task);
 app.use("/signup", signup);
-//check if logged in
+app.use("/logout", logout);
 
 app.listen(3050, () => {
   console.log("server started at port 3050");
