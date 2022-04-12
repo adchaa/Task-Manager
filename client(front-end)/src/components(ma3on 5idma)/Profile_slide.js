@@ -4,7 +4,7 @@ import { useAuth } from "./auth";
 import { Navigate } from "react-router-dom";
 export const Profile_slide = () => {
   const auth = useAuth();
-  const logout = async () => {
+  const logout_event = async () => {
     fetch("http://localhost:3050/logout", {
       method: "GET",
       credentials: "include",
@@ -18,14 +18,18 @@ export const Profile_slide = () => {
       }
     });
   };
-  const user = auth.user.charAt(0).toUpperCase() + auth.user.slice(1);
+  let user = "";
+  if (auth.user) {
+    user = auth.user.charAt(0).toUpperCase() + auth.user.slice(1);
+  }
+
   return (
     <div className="container_profile">
       <p className="profile_name">{user}</p>
       <div className="circle_bg">
         <IoSettingsSharp color="white" size="1.75em" />
       </div>
-      <div className="circle_bg" onClick={logout}>
+      <div className="circle_bg" onClick={logout_event}>
         <BiLogOutCircle color="white" size="1.75em" />
       </div>
     </div>

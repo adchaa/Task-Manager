@@ -1,26 +1,33 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./auth.js";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
+import { useEffect } from "react";
 export const Auth = ({ reverse, children }) => {
   const auth = useAuth();
   const { data, status } = useQuery("check", auth.check);
-  console.log(data);
+  useEffect(() => {
+    if (data) {
+      if (data.message === "logged in") {
+        auth.login(data.username);
+      }
+    }
+  }, [status]);
   if (status === "loading") {
     return <div className="title">loading...</div>;
-  }
-  if (status === "error") {
+  } else if (status === "error") {
     return <div className="title">error</div>;
-  }
-  if (reverse === true) {
-    if (data.message === "logged in") {
-      return <Navigate to="/" />;
+  } else if (status === "success" && data) {
+    if (reverse === true) {
+      if (data.message === "logged in") {
+        return <Navigate to="/" />;
+      }
+    } else {
+      if (data.message === "not logged in") {
+        return <Navigate to="/" />;
+      }
     }
-  } else {
-    if (data.message === "not logged in") {
-      return <Navigate to="/" />;
-    }
+    return children;
   }
-  return children;
 };
 export const ProtectedAuth = ({ reverse, children }) => {
   const queryClient = new QueryClient();
