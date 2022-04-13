@@ -1,22 +1,21 @@
 import { IoSettingsSharp } from "react-icons/io5";
 import { BiLogOutCircle } from "react-icons/bi";
-import { useAuth } from "./auth";
+import { useAuth } from "./authentication/auth";
 import { Navigate } from "react-router-dom";
 export const Profile_slide = () => {
   const auth = useAuth();
   const logout_event = async () => {
-    fetch("http://localhost:3050/logout", {
+    let res = await fetch("http://localhost:3050/logout", {
       method: "GET",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      if (res.message === "logout successful") {
-        auth.logout();
-        return <Navigate to="/" />;
-      }
     });
+    res = await res.json();
+    if (res.message === "logout successful") {
+      auth.logout();
+    }
   };
   let user = "";
   if (auth.user) {
@@ -29,7 +28,12 @@ export const Profile_slide = () => {
       <div className="circle_bg">
         <IoSettingsSharp color="white" size="1.75em" />
       </div>
-      <div className="circle_bg" onClick={logout_event}>
+      <div
+        className="circle_bg"
+        onClick={async () => {
+          await logout_event();
+        }}
+      >
         <BiLogOutCircle color="white" size="1.75em" />
       </div>
     </div>

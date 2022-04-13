@@ -47,14 +47,13 @@ body {
 .bar {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   width: 100vw;
   height: 8%;
   margin-top: 10px;
 }
 .logsign {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
   margin-right: 5vw;
 }
 .logsign p {
@@ -157,4 +156,7 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+.circle_bg:hover {
+  background-color: #5e5d5d;
 }

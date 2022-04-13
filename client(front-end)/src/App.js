@@ -5,8 +5,8 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { ProtectedAuth } from "./components(ma3on 5idma)/ProtectedAuth";
-import { AuthProvider } from "./components(ma3on 5idma)/auth";
+import { ProtectedAuth } from "./components(ma3on 5idma)/authentication/ProtectedAuth";
+import { AuthProvider } from "./components(ma3on 5idma)/authentication/auth";
 
 //pages
 import { MainPage } from "./pages/MainPage";

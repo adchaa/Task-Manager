@@ -1,11 +1,10 @@
 import logo from "../resource/logo.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useAuth } from "./auth";
+import { useAuth } from "./authentication/auth";
 import { Profile_slide } from "./Profile_slide";
 const Bar = ({ btn_click }) => {
   const auth = useAuth();
-  console.log(auth.user);
   return (
     <div className="bar">
       <img className="logo" src={logo} alt="logo" />

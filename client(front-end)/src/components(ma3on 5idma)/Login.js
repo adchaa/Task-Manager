@@ -3,7 +3,7 @@ import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { useAuth } from "./auth";
+import { useAuth } from "./authentication/auth";
 export const Login = ({ open, setopen }) => {
   const popup = {
     hidden: {
@@ -42,7 +42,6 @@ export const Login = ({ open, setopen }) => {
     const data = await res.json();
 
     if (data.message === "login successful") {
-      console.log("logged in");
       auth.login(data.username);
       redirect();
     } else if (data.message === "username is incorrect") {
@@ -52,7 +51,6 @@ export const Login = ({ open, setopen }) => {
       seterrorpass("password is incorrect");
       seterroruser("");
     } else {
-      console.log("error");
     }
   };
 
