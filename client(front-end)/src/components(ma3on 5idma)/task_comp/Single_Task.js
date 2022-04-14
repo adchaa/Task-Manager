@@ -1,7 +1,7 @@
 import { MdDeleteOutline } from "react-icons/md";
 import { TiEdit } from "react-icons/ti";
 import { BsCheckAll } from "react-icons/bs";
-function Single_Task({ mode, task_text, task_desc }) {
+function Single_Task({ mode, task_title, task_desc }) {
   const highlight_selected = (e) => {
     let selected = document.getElementsByClassName("selected");
     selected[0].classList.toggle("selected");
@@ -22,7 +22,7 @@ function Single_Task({ mode, task_text, task_desc }) {
           />
         </div>
         <div>
-          <h4>{task_text}</h4>
+          <h4>{task_title}</h4>
           <p>{task_desc}</p>
         </div>
       </div>

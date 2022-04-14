@@ -1,10 +1,26 @@
-import { BiPlus, BiMinus } from "react-icons/bi";
-import Single_Task from "./Single_Task";
+import { BiPlus } from "react-icons/bi";
 import { Taskdetails } from "./Taskdetails";
 import { Add_task } from "./Add_task";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { useAuth } from "../authentication/auth";
+import { Task_list } from "./Task_list";
 export const TaskBody = () => {
   const [open, setopen] = useState(false);
+  const auth = useAuth();
+  console.log(auth.user);
+  const fetchtasks = async (user) => {
+    const res = await fetch(`http://localhost:3050/task/list/${user}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  };
+  const { data, status } = useQuery("tasklist", () => fetchtasks(auth.user));
+
   return (
     <div className="tbody">
       <Add_task open={open} setopen={setopen} />
@@ -21,21 +37,7 @@ export const TaskBody = () => {
             />
           </div>
         </div>
-        <Single_Task
-          mode="selected"
-          task_text="Task 1"
-          task_desc="Task 1 description"
-        />
-        <Single_Task
-          mode="normal"
-          task_text="Task 1"
-          task_desc="Task 1 description"
-        />
-        <Single_Task
-          mode="complited"
-          task_text="Task 1"
-          task_desc="Task 1 description"
-        />
+        <Task_list data={data} status={status} />
       </div>
       <Taskdetails
         tasktitle="Task 1"

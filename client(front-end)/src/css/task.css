@@ -143,3 +143,43 @@
   border: none;
   font-size: 14px;
 }
+.btn_mytask {
+  position: relative;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid #283474;
+  padding: 17px 40px;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+.btn_mytask::after,
+.btn_mytask::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: inherit;
+  transition: 0.4s ease-out;
+}
+
+.btn_mytask::before {
+  top: -8px;
+  left: -8px;
+  border-width: 2px 0 0 2px;
+}
+.btn_mytask::after {
+  bottom: -8px;
+  right: -8px;
+  border-width: 0 2px 2px 0;
+}
+.btn_mytask:hover::before,
+.btn_mytask:hover::after {
+  width: calc(100% + 14px);
+  height: calc(100% + 14px);
+}
+.btn_mytask:hover {
+  background: #283474;
+}
