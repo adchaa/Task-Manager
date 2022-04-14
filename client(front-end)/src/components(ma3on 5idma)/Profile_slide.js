@@ -1,9 +1,10 @@
 import { IoSettingsSharp } from "react-icons/io5";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useAuth } from "./authentication/auth";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const Profile_slide = () => {
   const auth = useAuth();
+  const navigate = useNavigate();
   const logout_event = async () => {
     let res = await fetch("http://localhost:3050/logout", {
       method: "GET",
@@ -15,6 +16,7 @@ export const Profile_slide = () => {
     res = await res.json();
     if (res.message === "logout successful") {
       auth.logout();
+      navigate("/");
     }
   };
   let user = "";
