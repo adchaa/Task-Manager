@@ -39,6 +39,8 @@ export const Add_task = ({ open, setopen }) => {
               rows="5"
               className="input_textarea"
             ></textarea>
+            <h4>date:</h4>
+            <input type="date" className="input_date"></input>
             <div className="login_box">
               <motion.button whileHover={{ scale: 1.1 }} className="btn_login">
                 Add Task

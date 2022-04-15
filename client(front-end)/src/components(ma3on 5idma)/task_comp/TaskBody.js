@@ -34,6 +34,7 @@ export const TaskBody = () => {
               }}
               color="#fff"
               size="30px"
+              cursor="pointer"
             />
           </div>
         </div>

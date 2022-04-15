@@ -142,6 +142,7 @@
   border-radius: 5px;
   border: none;
   font-size: 14px;
+  resize: none;
 }
 .btn_mytask {
   position: relative;
@@ -182,4 +183,11 @@
 }
 .btn_mytask:hover {
   background: #283474;
+}
+.input_date {
+  padding: 10px;
+  border: 2px solid #283474;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #1d2a74;
 }

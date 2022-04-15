@@ -52,7 +52,10 @@ body {
   text-align: center;
 }
 .container h4 {
-  color: #adadad;
+  color: #d1d1d1;
+}
+.container input {
+  background-color: #d1d1d1;
 }
 .rem_check {
   margin-top: 20px;
