@@ -5,11 +5,9 @@ const log = Router();
 require("dotenv").config();
 // login user with username and password
 log.post("/", (req, res) => {
-  console.log(req.body);
   const { username, password } = req.body;
   const query = `select * from users where username = '${username}'`;
   db.query(query, (err, results) => {
-    console.log(results);
     if (err) {
       return res.status(500).json({
         message: "Internal server error",

@@ -8,9 +8,8 @@ import { Task_list } from "./Task_list";
 export const TaskBody = () => {
   const [open, setopen] = useState(false);
   const auth = useAuth();
-  console.log(auth.user);
-  const fetchtasks = async (user) => {
-    const res = await fetch(`http://localhost:3050/task/list/${user}`, {
+  const fetchtasks = async () => {
+    const res = await fetch(`http://localhost:3050/task/list/${auth.user}`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -19,7 +18,9 @@ export const TaskBody = () => {
     });
     return res.json();
   };
-  const { data, status } = useQuery("tasklist", () => fetchtasks(auth.user));
+  const { status, data } = useQuery("tasks", fetchtasks, {
+    refetchOnWindowFocus: false,
+  });
 
   return (
     <div className="tbody">
