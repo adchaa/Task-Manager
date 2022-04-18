@@ -24,7 +24,6 @@ task.post("/add", (req, res) => {
         id_user: id_user,
         task_date: req.body.task_date || null,
       };
-      console.log(task);
       db.query("INSERT INTO tasks SET ?", task, (err) => {
         if (err) {
           res.status(500).send(err);

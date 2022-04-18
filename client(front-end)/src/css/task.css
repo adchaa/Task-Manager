@@ -191,3 +191,9 @@
   font-size: 14px;
   color: #1d2a74;
 }
+.tasks {
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 80%;
+}
+/* custom scrollbar */

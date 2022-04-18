@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import { useQuery } from "react-query";
-export const Add_task = ({ open, setopen }) => {
+export const Add_task = ({ open, setopen, task_fetch }) => {
   const popup = {
     hidden: {
       opacity: 0,
@@ -17,8 +16,13 @@ export const Add_task = ({ open, setopen }) => {
   const [task_title, settask_title] = useState("");
   const [task_description, settask_description] = useState("");
   const [task_date, settask_date] = useState("");
+  const [errorTask, seterrorTask] = useState("");
   const addtask = async (e) => {
     e.preventDefault();
+    if (task_title === "") {
+      seterrorTask("Please fill the task title");
+      return;
+    }
     setTxt_btn("Adding...");
     const res = await fetch(`http://localhost:3050/task/add`, {
       method: "POST",
@@ -32,13 +36,14 @@ export const Add_task = ({ open, setopen }) => {
         task_date,
       }),
     });
-    const data = await res.json();
-    if (data.status === "success") {
+    console.log(res);
+    if (res.status === 200) {
       setTxt_btn("Add Task");
       settask_title("");
       settask_description("");
       settask_date("");
-      setopen(!open);
+      setopen(false);
+      task_fetch();
     }
   };
   return (
@@ -69,6 +74,7 @@ export const Add_task = ({ open, setopen }) => {
               }}
               type="text"
             ></input>
+            <p className="error">{errorTask}</p>
             <h4>Task Description:</h4>
             <textarea
               name="Text1"

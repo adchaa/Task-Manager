@@ -7,6 +7,7 @@ import { useAuth } from "../authentication/auth";
 import { Task_list } from "./Task_list";
 export const TaskBody = () => {
   const [open, setopen] = useState(false);
+  const [task_selected, settask_selected] = useState(null);
   const auth = useAuth();
   const fetchtasks = async () => {
     const res = await fetch(`http://localhost:3050/task/list/${auth.user}`, {
@@ -18,13 +19,16 @@ export const TaskBody = () => {
     });
     return res.json();
   };
-  const { status, data } = useQuery("tasks", fetchtasks, {
-    refetchOnWindowFocus: false,
+  const { status, data, refetch } = useQuery("tasks", fetchtasks, {
+    onSuccess: (data) => {
+      data[0].task_status = "selected";
+      settask_selected(data[0].id_task);
+    },
   });
 
   return (
     <div className="tbody">
-      <Add_task open={open} setopen={setopen} />
+      <Add_task open={open} setopen={setopen} task_fetch={refetch} />
       <div className="task_list">
         <div className="task_list_header">
           <h4 className="task_title">Tasks</h4>
@@ -39,15 +43,13 @@ export const TaskBody = () => {
             />
           </div>
         </div>
-        <Task_list data={data} status={status} />
+        <Task_list
+          data={data}
+          status={status}
+          settask_selected={settask_selected}
+        />
       </div>
-      <Taskdetails
-        tasktitle="Task 1"
-        status="complited"
-        desc="Task 1 description"
-        date="Today, 10:00 AM"
-        fulldate="10/10/2020"
-      />
+      <Taskdetails data={data} status={status} task_selected={task_selected} />
     </div>
   );
 };
