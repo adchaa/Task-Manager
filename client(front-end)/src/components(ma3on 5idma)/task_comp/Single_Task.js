@@ -3,13 +3,13 @@ import { TiEdit } from "react-icons/ti";
 import { BsCheckAll } from "react-icons/bs";
 function Single_Task({ id, mode, task_title, task_desc, settask_selected }) {
   const id_task = id;
-  console.log(id_task);
   const highlight_selected = (e) => {
     let selected = document.getElementsByClassName("selected");
-    selected[0].classList.toggle("selected");
+    if (selected.length > 0) {
+      selected[0].classList.toggle("selected");
+    }
     e.currentTarget.classList.toggle("selected");
     settask_selected(id_task);
-    console.log("key" + id_task);
   };
   return (
     <div

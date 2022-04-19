@@ -20,10 +20,7 @@ export const TaskBody = () => {
     return res.json();
   };
   const { status, data, refetch } = useQuery("tasks", fetchtasks, {
-    onSuccess: (data) => {
-      data[0].task_status = "selected";
-      settask_selected(data[0].id_task);
-    },
+    enabled: !!auth.user,
   });
 
   return (
