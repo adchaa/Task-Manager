@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import {AiOutlineClose} from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
 import verif from "../components(ma3on 5idma)/utils";
 import Particles from "react-tsparticles";
@@ -12,72 +12,78 @@ export const Signup = (props) => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [Confirm_password, setConfirm_password] = useState("");
-  const [tos,settos] = useState(false);
+  const [tos, settos] = useState(false);
   const [error_username, setError_username] = useState("");
   const [error_mail, setError_mail] = useState("");
   const [error_password, setError_password] = useState("");
   const [error_password2, setError_password2] = useState("");
   const [error_tos, setError_tos] = useState("");
-  //function
-  function show_error(error)
-  {
-    if(error[0])
-    {
+  //functions
+  const send = async (data) => {
+    console.log("sending");
+    const res = await fetch("http://localhost:3050/signup", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: data.username,
+        password: data.password,
+        email: data.mail,
+      }),
+    });
+    console.log(res);
+  };
+  function show_error(error) {
+    if (error[0]) {
       setError_username("Username must only contain letters and numbers");
-    }
-    else
-    {
+    } else {
       setError_username("");
     }
-    if(error[1])
-    {
+    if (error[1]) {
       setError_mail("mail is invalid");
-    }
-    else
-    {
+    } else {
       setError_mail("");
     }
-    if(error[2])
-    {
-      setError_password("password is invalid")
+    if (error[2]) {
+      setError_password("password is invalid");
+    } else {
+      setError_password("");
     }
-    else
-    {
-      setError_password("")
-    }
-    if(error[3])
-    {
+    if (error[3]) {
       setError_password2("Confirm Password must be identical to Password");
+    } else {
+      setError_password2("");
     }
-    else
-    {
-      setError_password2("")
-    }
-    if(error[4])
-    {
-      setError_tos("you need to agree to the terms and conditions")
-    }
-    else
-    {
+    if (error[4]) {
+      setError_tos("you need to agree to the terms and conditions");
+    } else {
       setError_tos("");
     }
   }
   function check(e) {
-    e.preventDefault()
+    e.preventDefault();
     const data = {
-      mail :mail,
-      username :username,
-      password :password,
-      password2 :Confirm_password,
-      tos:tos
+      mail: mail,
+      username: username,
+      password: password,
+      password2: Confirm_password,
+      tos: tos,
     };
-    const errors= verif(data);
+    const errors = verif(data);
     show_error(errors);
-    
+    if (
+      errors.filter((item) => {
+        item === false;
+      }).length === 0
+    ) {
+      send(data);
+    }
   }
   return (
     <div className="container">
-      <Particles params={conf} className="background"/>
+      <Particles params={conf} className="background" />
       <form className="inv form">
         <Link className="back" to="/">
           <AiOutlineClose color="white" size={25} />
@@ -113,12 +119,16 @@ export const Signup = (props) => {
         ></input>
         <span className="error">{error_password2}</span>
         <div className="rem_check">
-          <input onChange={e => settos(e.target.checked)} type="checkbox" />
+          <input onChange={(e) => settos(e.target.checked)} type="checkbox" />
           <label>i agree to the terms and conditions</label>
         </div>
         <span className="error">{error_tos}</span>
         <div className="login_box">
-          <motion.button whileHover={{scale:1.1}} onClick={e =>check(e)} className="btn_login">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            onClick={(e) => check(e)}
+            className="btn_login"
+          >
             Sign Up
           </motion.button>
         </div>

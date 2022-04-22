@@ -1,7 +1,8 @@
+require("dotenv").config();
 const config = {
     host:"localhost",
     user: "root",
-    password: "Adchaa@2486",
-    database: "taskManager"
+    password: process.env.PASSWORD,
+    database: "taskmanager"
 }
 module.exports = config;

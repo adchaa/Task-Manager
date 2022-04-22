@@ -17,6 +17,7 @@ signup.post(
     check("email").isEmail().withMessage("email must be valid"),
   ],
   (req, res) => {
+    console.log("entred");
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
@@ -41,8 +42,8 @@ signup.post(
     );
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-
-    const query = `insert into users(username,password,email,date_of_inscription) values('${username}','${hash}','${email}',now())`;
+    const today = new Date().toISOString();
+    const query = `insert into users(username,password,email,date_of_inscription) values('${username}','${hash}','${email}','${today}')`;
     db.query(query, (e) => {
       if (e) {
         res.status(422).send("something went wrong");
