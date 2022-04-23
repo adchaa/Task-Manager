@@ -5,9 +5,13 @@ import { motion } from "framer-motion";
 import verif from "../components(ma3on 5idma)/utils";
 import Particles from "react-tsparticles";
 import conf from "../resource/particlesjs-config.json";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../components(ma3on 5idma)/authentication/auth";
 export const Signup = (props) => {
-  //states
   const { state } = useLocation();
+  const navigate = useNavigate();
+  //states
+  const auth = useAuth();
   const [mail, setmail] = useState(state != null ? state.email : "");
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
@@ -21,7 +25,7 @@ export const Signup = (props) => {
   //functions
   const send = async (data) => {
     console.log("sending");
-    const res = await fetch("http://localhost:3050/signup", {
+    let res = await fetch("http://localhost:3050/signup", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -34,6 +38,12 @@ export const Signup = (props) => {
       }),
     });
     console.log(res);
+    res = await res.json();
+    console.log(res);
+    if (res.message === "user added successfully") {
+      auth.login(data.username);
+      navigate("/task");
+    }
   };
   function show_error(error) {
     if (error[0]) {
@@ -73,11 +83,7 @@ export const Signup = (props) => {
     };
     const errors = verif(data);
     show_error(errors);
-    if (
-      errors.filter((item) => {
-        item === false;
-      }).length === 0
-    ) {
+    if (errors.indexOf(true) === -1) {
       send(data);
     }
   }

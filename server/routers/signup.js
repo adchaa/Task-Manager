@@ -22,6 +22,7 @@ signup.post(
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
+    console.log(req.body);
     const { username, password, email } = req.body;
     //verify if username is already taken
     db.query(
@@ -46,10 +47,15 @@ signup.post(
     const query = `insert into users(username,password,email,date_of_inscription) values('${username}','${hash}','${email}','${today}')`;
     db.query(query, (e) => {
       if (e) {
-        res.status(422).send("something went wrong");
+        res.status(422).json({
+          message: "something went wrong",
+        });
         throw e;
       } else {
-        res.status(200).send("user added successfully");
+        req.session.user = req.body;
+        res.status(200).json({
+          message: "user added successfully",
+        });
       }
     });
   }
