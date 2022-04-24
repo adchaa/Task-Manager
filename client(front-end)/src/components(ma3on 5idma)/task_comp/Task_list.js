@@ -1,5 +1,5 @@
 import Single_Task from "./Single_Task";
-export const Task_list = ({ status, data, settask_selected }) => {
+export const Task_list = ({ status, data, settask_selected, refetch }) => {
   if (status === "loading" || status === "idle") {
     return <div className="title">Loading...</div>;
   }
@@ -18,6 +18,7 @@ export const Task_list = ({ status, data, settask_selected }) => {
               task_desc={task.task_description}
               task_title={task.task_title}
               settask_selected={settask_selected}
+              refetch={refetch}
             />
           );
         })}

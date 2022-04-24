@@ -38,7 +38,6 @@
 }
 .task_box {
   margin-top: 10px;
-  border: 2px solid #283474;
   border-radius: 5px;
   padding: 5px;
   padding-left: 10px;
@@ -46,6 +45,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  background-color: #232222;
 }
 .task_box:hover {
   background-color: #283474;
@@ -112,10 +112,10 @@
   color: red;
 }
 .edit_btn {
-  color: white;
+  color: rgb(245, 244, 244);
 }
 .edit_btn:hover {
-  color: #343a8f;
+  color: #646bcb;
 }
 .selected {
   background-color: #283474 !important;
@@ -196,4 +196,6 @@
   overflow-y: scroll;
   height: 80%;
 }
-/* custom scrollbar */
+.tasks::-webkit-scrollbar {
+  display: none;
+}

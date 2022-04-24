@@ -55,5 +55,25 @@ task.get("/list/:username", (req, res) => {
     );
   }
 });
-
+task.delete("/delete/:id", (req, res) => {
+  if (!req.session.user) {
+    res.status(401).json({
+      message: "Unauthorized",
+    });
+  } else {
+    const { id } = req.params;
+    console.log(req.params);
+    db.query(`delete from tasks where id_task= ?`, [id], (err) => {
+      if (err) {
+        res.status(500).json({
+          message: "error",
+        });
+      } else {
+        res.status(200).json({
+          message: "deleted the task successfully",
+        });
+      }
+    });
+  }
+});
 module.exports = task;
