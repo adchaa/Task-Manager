@@ -13,10 +13,7 @@ export const Task_list = ({ status, data, settask_selected, refetch }) => {
           return (
             <Single_Task
               key={task.id_task}
-              id={task.id_task}
-              mode={task.task_status}
-              task_desc={task.task_description}
-              task_title={task.task_title}
+              data={task}
               settask_selected={settask_selected}
               refetch={refetch}
             />
