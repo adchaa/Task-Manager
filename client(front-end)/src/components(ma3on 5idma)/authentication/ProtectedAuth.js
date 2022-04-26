@@ -1,12 +1,16 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./auth.js";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
-import { useEffect } from "react";
+import { LoadingAnimation } from "../LoadingAnimation.js";
 export const Auth = ({ reverse, children }) => {
   const auth = useAuth();
   const { data, status } = useQuery("check", auth.check);
   if (status === "loading") {
-    return <div className="title">loading...</div>;
+    return (
+      <div className="loading_container">
+        <LoadingAnimation size="70px" />
+      </div>
+    );
   } else if (status === "error") {
     return <div className="title">error</div>;
   } else if (status === "success" && data) {

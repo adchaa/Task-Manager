@@ -1,6 +1,11 @@
+import { LoadingAnimation } from "../LoadingAnimation";
 export const Taskdetails = ({ data, status, task_selected }) => {
   if (status === "loading" || status === "idle") {
-    return <div className="title">Loading...</div>;
+    return (
+      <div className="center_loading">
+        <LoadingAnimation size="30px" />
+      </div>
+    );
   }
   if (status === "error") {
     return <div>Error!</div>;

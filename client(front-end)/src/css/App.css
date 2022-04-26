@@ -160,3 +160,30 @@ body {
 .circle_bg:hover {
   background-color: #5e5d5d;
 }
+.loading {
+  border: solid 7px;
+  border-radius: 50%;
+  border-color: #5e5d5d;
+  border-left-color: #0e5b8f;
+  animation: loadingAnimation 1.1s infinite linear;
+}
+@keyframes loadingAnimation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center_loading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
