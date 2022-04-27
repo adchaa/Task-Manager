@@ -43,7 +43,7 @@ task.get("/list/:username", (req, res) => {
   } else {
     const { username } = req.params;
     db.query(
-      "SELECT * FROM tasks WHERE id_user = (SELECT id_user FROM users WHERE username = ?)",
+      "SELECT * FROM tasks WHERE id_user = (SELECT id_user FROM users WHERE username = ?) ORDER BY task_date",
       [username],
       (err, result) => {
         if (err) {
@@ -71,6 +71,36 @@ task.delete("/delete/:id", (req, res) => {
       } else {
         res.status(200).json({
           message: "deleted the task successfully",
+        });
+      }
+    });
+  }
+});
+task.post("/edit", (req, res) => {
+  if (!req.session.user) {
+    res.status(401).json({
+      message: "Unauthorized",
+    });
+  } else if (req.session.user.username !== req.body.username) {
+    res.status(403).json({
+      message: "Forbidden",
+    });
+  } else {
+    const task = {
+      task_title: req.body.task_title,
+      task_description: req.body.task_description,
+      task_date: req.body.task_date,
+    };
+    const query = `update tasks set ? where id_task=${req.body.id_task} ;`;
+    db.query(query, task, (err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({
+          message: "error",
+        });
+      } else {
+        res.status(200).json({
+          message: "edited successfully",
         });
       }
     });

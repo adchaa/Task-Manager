@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import { useAuth } from "../authentication/auth";
 export const Edit_task = ({ open, setopen, refetch, data }) => {
   const popup = {
     hidden: {
@@ -19,9 +20,32 @@ export const Edit_task = ({ open, setopen, refetch, data }) => {
     data.task_description
   );
   const [task_date, settask_date] = useState(data.task_date);
+  const auth = useAuth();
   //modify the task
-  const edit = () => {
-    setTxt_btn("wait");
+  const edit = async (e) => {
+    e.preventDefault();
+    setTxt_btn("editing...");
+    let res = await fetch("http://localhost:3050/task/edit", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: auth.user,
+        id_task: data.id_task,
+        task_title: task_title,
+        task_description: task_description,
+        task_date: task_date,
+      }),
+    });
+    res = await res.json();
+    if (res.message === "edited successfully") {
+      console.log("editing", res);
+      setTxt_btn("edit");
+      setopen(false);
+      refetch();
+    }
   };
   return (
     <AnimatePresence>
