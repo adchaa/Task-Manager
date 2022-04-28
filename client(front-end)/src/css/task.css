@@ -74,6 +74,7 @@
 .desc {
   color: #868585;
   font-size: 15px;
+  overflow-wrap: break-word;
 }
 .completed_status {
   color: green;
@@ -198,4 +199,27 @@
 }
 .tasks::-webkit-scrollbar {
   display: none;
+}
+@media screen and (max-width: 1200px) {
+  .task_list {
+    width: 30vw;
+  }
+  .task_detail {
+    width: 50vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  .tbody {
+    flex-direction: column;
+    align-items: center;
+  }
+  .task_list {
+    width: 90vw;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .task_detail {
+    width: 90vw;
+    margin-bottom: 10px;
+  }
 }

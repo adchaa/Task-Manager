@@ -49,7 +49,7 @@ function Single_Task({ data, settask_selected, refetch }) {
           </div>
           <div>
             <h4>{task_data.task_title}</h4>
-            <p>{task_data.task_desc}</p>
+            <p>{task_data.task_description.substring(0, 25)}</p>
           </div>
         </div>
         <div className="ed_del_btn">

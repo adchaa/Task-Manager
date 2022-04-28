@@ -2,6 +2,7 @@ body {
   margin: 0;
   background-color: #151515;
 }
+
 .header {
   height: calc(100vh - 10px);
   width: 100vw;
@@ -115,6 +116,9 @@ body {
   height: auto;
   align-items: center;
 }
+.email_box input {
+  font-size: 1rem;
+}
 .logo_quote_top {
   position: absolute;
   color: #b9bbb3;
@@ -186,4 +190,9 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+@media screen and (max-width: 750px) {
+  .email_box {
+    width: 90%;
+  }
 }
