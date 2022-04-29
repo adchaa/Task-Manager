@@ -1,7 +1,31 @@
 const { Router } = require("express");
 const db = require("../mysql/db");
 const task = Router();
-
+task.post("/check", (req, res) => {
+  if (!req.session.user) {
+    res.status(401).send("Unauthorized");
+  }
+  if (req.session.user.username !== req.body.username) {
+    res.status(403).send("Forbidden");
+  } else {
+    let { username, id, status } = req.body;
+    if (status === "uncompleted") {
+      status = "'completed'";
+    } else {
+      status = "'uncompleted'";
+    }
+    db.query(
+      `UPDATE tasks set task_status=${status} where id_task=${id} and id_user=${req.session.user.id_user}`,
+      (err) => {
+        if (err) {
+          throw err;
+        } else {
+          res.sendStatus(200);
+        }
+      }
+    );
+  }
+});
 task.post("/add", (req, res) => {
   //get user_id from db by username
   console.log(req.session);

@@ -77,7 +77,7 @@
   overflow-wrap: break-word;
 }
 .completed_status {
-  color: green;
+  color: #3faa63;
   font-size: 13px;
   margin-top: 3px;
 }
@@ -122,14 +122,14 @@
   background-color: #283474 !important;
   border-color: #283474 !important;
 }
-.complited {
+.completed {
   background-color: rgba(31, 150, 31, 0.267);
   border-color: rgba(31, 150, 31, 0.267);
 }
-.complited h4 {
+.completed h4 {
   color: #c4c1c1;
 }
-.complited p {
+.completed p {
   color: #535353;
 }
 .dfg {

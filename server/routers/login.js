@@ -5,7 +5,6 @@ const log = Router();
 require("dotenv").config();
 // login user with username and password
 log.post("/", (req, res) => {
-  console.log(db);
   const { username, password } = req.body;
   const query = `select * from users where username = '${username}'`;
   db.query(query, (err, results) => {
