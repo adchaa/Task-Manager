@@ -67,7 +67,7 @@ task.get("/list/:username", (req, res) => {
   } else {
     const { username } = req.params;
     db.query(
-      "SELECT * FROM tasks WHERE id_user = (SELECT id_user FROM users WHERE username = ?) ORDER BY task_date",
+      "SELECT * FROM tasks WHERE id_user = (SELECT id_user FROM users WHERE username = ?) ORDER BY task_status DESC, task_date DESC",
       [username],
       (err, result) => {
         if (err) {

@@ -8,10 +8,10 @@ function Single_Task({ data, settask_selected, refetch }) {
   const task_data = data;
   const auth = useAuth();
   const [open, setopen] = useState(false);
-  console.log("status=" + task_data.task_status);
   const [checked, setchecked] = useState(task_data.task_status === "completed");
   //functions
   const complite_task = async () => {
+    setchecked(!checked);
     const res = await fetch(`http://localhost:3050/task/check`, {
       method: "POST",
       credentials: "include",
@@ -25,7 +25,6 @@ function Single_Task({ data, settask_selected, refetch }) {
       }),
     });
     if (res.status === 200) {
-      setchecked(!checked);
       refetch();
     }
   };
