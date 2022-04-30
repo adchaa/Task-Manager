@@ -8,7 +8,7 @@ export const CheckIcon = ({ size, mode }) => {
     fill_circle = "none";
   } else {
     check = "none";
-    fill_circle = "#363636";
+    fill_circle = "#202121";
     fill_inside = "none";
   }
   return (

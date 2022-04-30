@@ -55,7 +55,7 @@ function Single_Task({ data, settask_selected, refetch }) {
       <Edit_task open={open} setopen={setopen} refetch={refetch} data={data} />
       <div
         onClick={(e) => {
-          if (e.target.matches(".task_box")) {
+          if (!e.target.matches(".delete_btn")) {
             highlight_selected(e);
           }
         }}
