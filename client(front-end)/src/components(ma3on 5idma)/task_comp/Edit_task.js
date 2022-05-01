@@ -81,6 +81,7 @@ export const Edit_task = ({ open, setopen, refetch, data }) => {
               name="Text1"
               rows="5"
               className="input_textarea"
+              maxLength="500"
               onChange={(e) => {
                 settask_description(e.target.value);
               }}

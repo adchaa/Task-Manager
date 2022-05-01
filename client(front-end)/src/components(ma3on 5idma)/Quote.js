@@ -5,7 +5,7 @@ export const Quote = () => {
     <div className="quote">
       <FaQuoteRight className="logo_quote_top" />
       <h2>
-        If <span>TASK</span> once begun,
+        If a <span>TASK</span> once begun,
       </h2>
       <h2>never leave it until it done.</h2>
       <FaQuoteLeft className="logo_quote_bottom" />

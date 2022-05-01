@@ -80,18 +80,23 @@ export const Add_task = ({ open, setopen, task_fetch }) => {
               name="Text1"
               rows="5"
               className="input_textarea"
+              maxLength="500"
               onChange={(e) => {
                 settask_description(e.target.value);
               }}
             ></textarea>
-            <h4>date:</h4>
+            <div className="date">
+              <button className="today_btn">TODAY</button>
+              <button className="tomorrow_btn">TOMORROW</button>
             <input
               type="date"
+              disabled={true}
               onChange={(e) => {
                 settask_date(e.target.value);
               }}
               className="input_date"
             ></input>
+            </div>
             <div className="login_box">
               <motion.button
                 onClick={addtask}

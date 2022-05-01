@@ -192,6 +192,7 @@
   font-size: 14px;
   color: #1d2a74;
 }
+
 .tasks {
   overflow: hidden;
   overflow-y: scroll;
@@ -222,4 +223,46 @@
     width: 90vw;
     margin-bottom: 10px;
   }
+}
+.tomorrow_btn
+{
+  border-style: solid;
+  border-color: #283474;
+  background-color: transparent;
+  color: #6579ec;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+.tomorrow_btn:hover
+{
+  background: #283474;
+}
+.today_btn
+{
+  border-style: solid;
+  border-color: #287435;
+  background-color: transparent;
+  color: #7bec65;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+.today_btn:hover
+{
+  background: #287435;
+}
+.date
+{
+  margin-top: 20px;
+}
+.date *
+{
+  margin-right: 5px;
 }
