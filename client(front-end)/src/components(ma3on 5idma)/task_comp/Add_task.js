@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import { MdToday } from "react-icons/md";
 export const Add_task = ({ open, setopen, task_fetch }) => {
   const popup = {
     hidden: {
@@ -17,6 +18,23 @@ export const Add_task = ({ open, setopen, task_fetch }) => {
   const [task_description, settask_description] = useState("");
   const [task_date, settask_date] = useState("");
   const [errorTask, seterrorTask] = useState("");
+  const [selected_date, setselected_date] = useState(2);
+  const date_Today = (e) => {
+    e.preventDefault();
+
+    let today = new Date().toISOString().split("T")[0];
+    settask_date(today);
+    setselected_date(0);
+  };
+  const date_Tomorrow = (e) => {
+    e.preventDefault();
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow = tomorrow.toISOString().split("T")[0];
+    settask_date(tomorrow);
+    setselected_date(1);
+  };
+
   const addtask = async (e) => {
     e.preventDefault();
     if (task_title === "") {
@@ -86,16 +104,41 @@ export const Add_task = ({ open, setopen, task_fetch }) => {
               }}
             ></textarea>
             <div className="date">
-              <button className="today_btn">TODAY</button>
-              <button className="tomorrow_btn">TOMORROW</button>
-            <input
-              type="date"
-              disabled={true}
-              onChange={(e) => {
-                settask_date(e.target.value);
-              }}
-              className="input_date"
-            ></input>
+              <button
+                onClick={(e) => {
+                  date_Today(e);
+                }}
+                className={
+                  "today_btn " + (selected_date === 0 ? "today_selected" : "")
+                }
+              >
+                TODAY
+              </button>
+              <button
+                onClick={(e) => {
+                  date_Tomorrow(e);
+                }}
+                className={
+                  "tomorrow_btn " +
+                  (selected_date === 1 ? "tomorrow_selected" : "")
+                }
+              >
+                TOMORROW
+              </button>
+              <div
+                onClick={() => {
+                  setselected_date(2);
+                }}
+              >
+                <input
+                  type="date"
+                  disabled={selected_date === 2 ? false : true}
+                  onChange={(e) => {
+                    settask_date(e.target.value);
+                  }}
+                  className="input_date"
+                ></input>
+              </div>
             </div>
             <div className="login_box">
               <motion.button
