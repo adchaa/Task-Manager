@@ -54,9 +54,9 @@ export const Add_task = ({ open, setopen, task_fetch }) => {
         task_date,
       }),
     });
-    console.log(res);
     if (res.status === 200) {
       setTxt_btn("Add Task");
+      seterrorTask("");
       settask_title("");
       settask_description("");
       settask_date("");

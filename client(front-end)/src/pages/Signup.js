@@ -24,7 +24,6 @@ export const Signup = (props) => {
   const [error_tos, setError_tos] = useState("");
   //functions
   const send = async (data) => {
-    console.log("sending");
     let res = await fetch("http://localhost:3050/signup", {
       method: "POST",
       credentials: "include",
@@ -37,9 +36,7 @@ export const Signup = (props) => {
         email: data.mail,
       }),
     });
-    console.log(res);
     res = await res.json();
-    console.log(res);
     if (res.message === "user added successfully") {
       auth.login(data.username);
       navigate("/task");

@@ -17,12 +17,10 @@ signup.post(
     check("email").isEmail().withMessage("email must be valid"),
   ],
   (req, res) => {
-    console.log("entred");
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-    console.log(req.body);
     const { username, password, email } = req.body;
     //verify if username is already taken
     db.query(

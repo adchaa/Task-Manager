@@ -4,7 +4,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   useEffect(async () => {
     const resp = await check();
-    console.log(resp);
     if (resp.message === "logged in") {
       setUser(resp.username);
     }
@@ -18,7 +17,6 @@ export const AuthProvider = ({ children }) => {
   };
   //fetch to check if user is logged in
   const check = async () => {
-    console.log("checking");
     const res = await fetch("http://localhost:3050/check", {
       method: "GET",
       credentials: "include",

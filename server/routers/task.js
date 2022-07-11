@@ -28,7 +28,6 @@ task.post("/check", (req, res) => {
 });
 task.post("/add", (req, res) => {
   //get user_id from db by username
-  console.log(req.session);
   const { username } = req.session.user;
   let id_user;
   db.query(
@@ -36,7 +35,6 @@ task.post("/add", (req, res) => {
     [username],
     (err, result) => {
       if (err) {
-        console.log(err);
         res.status(500).send("Internal Server Error");
       } else {
         id_user = result[0].id_user;
@@ -44,7 +42,7 @@ task.post("/add", (req, res) => {
       let task = {
         task_title: req.body.task_title,
         task_description: req.body.task_description,
-        task_status: "unfinished",
+        task_status: "uncompleted",
         id_user: id_user,
         task_date: req.body.task_date || null,
       };
@@ -59,7 +57,7 @@ task.post("/add", (req, res) => {
   );
 });
 task.get("/list/:username", (req, res) => {
-  if (!req.session.user) {
+  if (!req.session.user || !req.session.user.username) {
     res.status(401).send("Unauthorized");
   }
   if (req.session.user.username !== req.params.username) {
@@ -86,7 +84,6 @@ task.delete("/delete/:id", (req, res) => {
     });
   } else {
     const { id } = req.params;
-    console.log(req.params);
     db.query(`delete from tasks where id_task= ?`, [id], (err) => {
       if (err) {
         res.status(500).json({
@@ -118,7 +115,6 @@ task.post("/edit", (req, res) => {
     const query = `update tasks set ? where id_task=${req.body.id_task} ;`;
     db.query(query, task, (err) => {
       if (err) {
-        console.log(err);
         res.status(500).json({
           message: "error",
         });

@@ -4,7 +4,7 @@ import { CheckIcon } from "./CheckIcon";
 import { Edit_task } from "./Edit_task";
 import { useAuth } from "../authentication/auth";
 import { useState } from "react";
-function Single_Task({ data, settask_selected, refetch }) {
+function Single_Task({ data, settask_selected, task_selected, refetch }) {
   const task_data = data;
   const auth = useAuth();
   const [open, setopen] = useState(false);
@@ -38,7 +38,9 @@ function Single_Task({ data, settask_selected, refetch }) {
     );
     res = await res.json();
     if (res.message === "deleted the task successfully") {
-      console.log("deleted succ");
+      if (task_data.id_task === task_selected) {
+        settask_selected(null);
+      }
       refetch();
     }
   };

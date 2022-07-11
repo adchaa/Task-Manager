@@ -30,7 +30,6 @@ app.use(
 
 app.use(express.json());
 app.get("/check", (req, res) => {
-  console.log(req.session.user);
   if (req.session.user) {
     return res.status(200).json({
       username: req.session.user.username,

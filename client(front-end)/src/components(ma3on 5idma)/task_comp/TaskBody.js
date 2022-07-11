@@ -21,9 +21,7 @@ export const TaskBody = () => {
   };
   const { status, data, refetch } = useQuery("tasks", fetchtasks, {
     enabled: !!auth.user,
-    onSuccess: () => {
-      console.log(data);
-    },
+    onSuccess: () => {},
   });
 
   return (
@@ -47,6 +45,7 @@ export const TaskBody = () => {
           data={data}
           status={status}
           settask_selected={settask_selected}
+          task_selected={task_selected}
           refetch={refetch}
         />
       </div>
